@@ -65,11 +65,16 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'Flow',
+      // Official RVLT Flow lockup (mirrored from gearflow's
+      // src/components/brand/rvlt-flow-logo.tsx — the same asset the app
+      // itself uses in its sidebar/auth screens), not a hand-composed
+      // mark + text approximation. No separate `title` — the wordmark is
+      // baked into the image.
       logo: {
-        alt: 'RVLT',
-        src: 'img/rvlt-mark.svg',
-        srcDark: 'img/rvlt-mark-dark.svg',
+        alt: 'RVLT Flow',
+        src: 'img/rvlt-flow-logo.svg',
+        srcDark: 'img/rvlt-flow-logo-dark.svg',
+        width: 130,
       },
       items: [
         {
