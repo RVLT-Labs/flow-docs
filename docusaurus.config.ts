@@ -108,7 +108,7 @@ const config: Config = {
         },
         {
           href: 'https://flow.rvlt.app',
-          label: 'Open Flow ↗',
+          label: 'Open Flow',
           position: 'right',
         },
       ],
