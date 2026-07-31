@@ -81,3 +81,32 @@
   font-size: 0.875rem;
   color: var(--rvlt-muted);
 }
+
+/* Two hero sticker patches (§10) in the open corners — never over the
+   centered eyebrow/headline/search column. Hidden below 880px via the
+   shared .rvlt-sticker rule in custom.css. */
+.stickerGaff {
+  top: 18%;
+  right: 6%;
+  width: 68px;
+  height: 68px;
+  transform: rotate(-8deg);
+}
+
+.stickerAaa {
+  bottom: 10%;
+  left: 5%;
+  width: 62px;
+  height: 62px;
+  transform: rotate(6deg);
+}
+
+@media screen and (max-width: 1180px) {
+  .stickerGaff {
+    right: 1%;
+  }
+
+  .stickerAaa {
+    left: 1%;
+  }
+}

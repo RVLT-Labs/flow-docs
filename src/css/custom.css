@@ -55,6 +55,7 @@
   --rvlt-teal: #3fc8be;
   --rvlt-pink: #e875ac;
   --rvlt-lime: #afc44e;
+  --rvlt-dark: #0e0c0a;
   --rvlt-scrim: rgba(14, 12, 10, 0.66);
   --rvlt-select: rgba(224, 54, 61, 0.2);
   --rvlt-link: #5b8def;
@@ -190,6 +191,7 @@
   --rvlt-teal: #1c8b83;
   --rvlt-pink: #c2487e;
   --rvlt-lime: #6e8c12;
+  --rvlt-dark: #241f1a;
   --rvlt-scrim: rgba(40, 30, 15, 0.45);
   --rvlt-select: rgba(193, 34, 41, 0.16);
   --rvlt-link: #2f6bd6;
@@ -652,6 +654,55 @@ table thead tr {
   font-size: 1.0625rem;
   color: var(--rvlt-red);
   transform: rotate(-1.5deg);
+}
+
+/* ================= Doodles & stickers (§10) — the reference implementation's
+   own techniques (rvlt-designlanguage/index.html `.uline`/`.stk`), not
+   invented art. DESIGN.md bans fabricating NEW mascot poses/gear stickers,
+   not reusing the existing hand-drawn-underline/patch devices it already
+   ships. Marketing-only: never on data-dense screens (§10 rule), hidden
+   below 880px per §16.6, aria-hidden since purely decorative. ================= */
+.rvlt-uline {
+  position: relative;
+  white-space: nowrap;
+  color: var(--rvlt-red);
+  font-weight: 600;
+}
+
+.rvlt-uline svg {
+  position: absolute;
+  left: -3%;
+  bottom: -0.5rem;
+  width: 106%;
+  height: 0.875rem;
+  overflow: visible;
+}
+
+.rvlt-sticker {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: var(--rvlt-r);
+  box-shadow: var(--rvlt-sh-stk);
+  border: 3px solid #fffdf8;
+  z-index: 1;
+}
+
+.rvlt-sticker--round {
+  border-radius: 50%;
+}
+
+.rvlt-sticker-txt {
+  font-family: var(--rvlt-font-display);
+  font-weight: 800;
+  color: #fffdf8;
+  letter-spacing: 0.02em;
+}
+
+@media screen and (max-width: 880px) {
+  .rvlt-sticker {
+    display: none;
+  }
 }
 
 /* ================= Sidebar menu — selected state uses the resting lit edge (§9.1) ================= */
