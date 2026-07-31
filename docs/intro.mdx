@@ -1,17 +1,21 @@
 ---
-title: This site is under construction
-description: The RVLT Flow user guide — theme is live, content is next.
+title: Theme preview
+description: Internal page for checking the RVLT theme — not part of the guide.
+unlisted: true
 ---
 
-# This site is under construction
+# Theme preview
+
+Internal QA page — not part of the published guide (kept `unlisted`, so it's
+off the sidebar and out of search, but still reachable by direct link for
+checking the theme). The real topic pages linked from the homepage are the
+actual guide; this one exists to sanity-check headings, body copy, links,
+and the callout types below whenever the theme changes.
 
 This is the **RVLT Flow** user guide — separate from the developer-facing
-docs in the app repo. Right now it's just the scaffold: Docusaurus wired to
-the [RVLT design language](https://github.com/RVLT-Labs/rvlt-designlanguage).
-
-No real content has landed yet. The information architecture (getting
-started, core concepts — projects, warehouse/fulfillment, crew, assets/kits —
-and per-module guides) is tracked in
+docs in the app repo. No real content has landed yet. The information
+architecture (getting started, core concepts — projects, warehouse/
+fulfillment, crew, assets/kits — and per-module guides) is tracked in
 [gearflow#959](https://github.com/TwoToned/gearflow/issues/959).
 
 :::note[What this page is for]
@@ -46,3 +50,14 @@ function loadOut(kit: string): boolean {
   return true;
 }
 ```
+
+## Numbered steps
+
+A generic example (not real instructions) to check the stepper-styled
+ordered list — top-level `<ol>` items get a numbered ring, matching a
+walked-through guide instead of a plain numbered list:
+
+1. Open the thing you're about to do this to.
+2. Do the first part of the thing.
+3. Confirm it looks right before moving on.
+4. Do the last part, then check it off.
