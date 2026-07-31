@@ -43,3 +43,79 @@
   color: var(--rvlt-ink-2);
   margin-bottom: 0;
 }
+
+/* Getting-started hero banner — DESIGN.md's "Live card" pattern (--elev +
+   a resting --lit edge instead of only-on-hover) marks it as the one
+   permanently-elevated card, distinct from the topic grid below. */
+.heroCard {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.75rem 2rem;
+  margin-bottom: 3rem;
+  background: var(--rvlt-elev);
+  border: 2px solid var(--rvlt-border);
+  border-radius: var(--rvlt-r-lg);
+  box-shadow:
+    var(--rvlt-sh-card),
+    var(--rvlt-lit);
+  color: var(--rvlt-ink);
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.heroCard:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    var(--rvlt-sh-hover),
+    var(--rvlt-lit);
+  color: var(--rvlt-ink);
+  text-decoration: none;
+}
+
+.heroPatch {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+}
+
+.heroPatch svg {
+  width: 28px;
+  height: 28px;
+}
+
+.heroCardBody {
+  flex: 1 1 auto;
+}
+
+.heroCardTitle {
+  font-size: 1.375rem;
+  margin-bottom: 0.25rem;
+}
+
+.heroCardDescription {
+  font-size: 1rem;
+  color: var(--rvlt-ink-2);
+  margin-bottom: 0;
+}
+
+.heroCardCta {
+  flex: 0 0 auto;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--rvlt-red);
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 640px) {
+  .heroCard {
+    flex-wrap: wrap;
+    padding: 1.5rem;
+  }
+
+  .heroCardCta {
+    margin-left: 4.5rem;
+  }
+}

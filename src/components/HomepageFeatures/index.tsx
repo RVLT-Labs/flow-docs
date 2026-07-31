@@ -66,18 +66,23 @@ type Topic = {
   patchColor: 'blue' | 'amber' | 'green' | 'purple' | 'coral';
 };
 
+// Getting started is the one entry point every new user needs — a hero-style
+// banner (DESIGN.md's "Live card": --elev + a resting --lit edge, the one
+// card allowed to stay permanently "lifted" rather than only on hover)
+// pulls it out of the topic grid instead of making it a fifth equal card.
+const GETTING_STARTED: Topic = {
+  title: 'Getting started',
+  description: 'Set up your org, invite your crew, run your first job.',
+  to: '/docs/getting-started',
+  icon: <RocketIcon />,
+  patchColor: 'blue',
+};
+
 // Topic cards, not a nested dev-docs tree — mirrors how help centers
 // (Navan "Browse top categories", Revolut's topic list) organize by task,
 // not module hierarchy. Maps 1:1 to the product's own modules, not invented
 // content — each links to a "guide is being written" placeholder.
 const TOPICS: Topic[] = [
-  {
-    title: 'Getting started',
-    description: 'Set up your org, invite your crew, run your first job.',
-    to: '/docs/getting-started',
-    icon: <RocketIcon />,
-    patchColor: 'blue',
-  },
   {
     title: 'Projects & quotes',
     description: 'Build quotes, track status, get client sign-off.',
@@ -110,7 +115,10 @@ const TOPICS: Topic[] = [
 
 function TopicCard({title, description, to, icon, patchColor}: Topic) {
   return (
-    <div className="col col--4">
+    // 4 remaining topics (Getting started got promoted to the hero banner
+    // above) -> col--3 fills one clean row of 4 instead of orphaning a
+    // fourth card alone under a 3-per-row col--4 grid.
+    <div className="col col--3">
       <Link to={to} className={styles.card}>
         <div className={`rvlt-patch rvlt-patch--${patchColor}`}>{icon}</div>
         <div>
@@ -124,10 +132,28 @@ function TopicCard({title, description, to, icon, patchColor}: Topic) {
   );
 }
 
+function GettingStartedHero({title, description, to, icon, patchColor}: Topic) {
+  return (
+    <Link to={to} className={styles.heroCard}>
+      <div className={`rvlt-patch rvlt-patch--${patchColor} ${styles.heroPatch}`}>
+        {icon}
+      </div>
+      <div className={styles.heroCardBody}>
+        <Heading as="h3" className={styles.heroCardTitle}>
+          {title}
+        </Heading>
+        <p className={styles.heroCardDescription}>{description}</p>
+      </div>
+      <span className={styles.heroCardCta}>Start here →</span>
+    </Link>
+  );
+}
+
 export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
+        <GettingStartedHero {...GETTING_STARTED} />
         <Heading as="h2" className={styles.sectionHeading}>
           Browse by topic
         </Heading>
