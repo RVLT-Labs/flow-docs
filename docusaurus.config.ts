@@ -55,6 +55,24 @@ const config: Config = {
     ],
   ],
 
+  // Local search — resolves the "search provider" open decision (gearflow
+  // #959) for now. A help center leads with search (see every Mobbin
+  // reference: Navan, Zendesk, Bard, Revolut) — this is that affordance,
+  // not just a nice-to-have. Revisit for Algolia DocSearch if/when content
+  // volume outgrows a client-side index.
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: true,
+        docsRouteBasePath: '/docs',
+        language: 'en',
+      },
+    ],
+  ],
+
   themeConfig: {
     image: 'img/rvlt-labs-logo.svg',
     // Dark "espresso" is the brand's primary surface (DESIGN.md §3.1); Paper
