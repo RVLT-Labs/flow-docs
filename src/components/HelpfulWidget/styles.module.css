@@ -1,0 +1,49 @@
+.widget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 2.5rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--rvlt-elev);
+  border: 2px solid var(--rvlt-border);
+  border-radius: var(--rvlt-r);
+}
+
+.prompt,
+.thanks {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--rvlt-ink-2);
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.voteButton {
+  padding: 0.375rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: var(--rvlt-font-sans);
+  color: var(--rvlt-ink);
+  background: transparent;
+  border: 2px solid var(--rvlt-border);
+  border-radius: var(--rvlt-r-pill);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.voteButton:hover {
+  background: var(--rvlt-card);
+  transform: translateY(-1px);
+}
+
+.voteButton:active {
+  transform: translateY(0);
+}
