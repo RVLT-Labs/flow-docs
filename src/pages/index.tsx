@@ -63,10 +63,9 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">
           <span className="rvlt-uline">
-            RTFM
+            RTFM. It'll be easier for us all.
             <Squiggle />
           </span>
-          . It'll be easier for us all.
         </p>
         <div className={styles.searchWrap}>
           <SearchBar />

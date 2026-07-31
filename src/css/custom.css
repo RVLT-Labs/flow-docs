@@ -665,8 +665,6 @@ table thead tr {
 .rvlt-uline {
   position: relative;
   white-space: nowrap;
-  color: var(--rvlt-red);
-  font-weight: 600;
 }
 
 .rvlt-uline svg {
