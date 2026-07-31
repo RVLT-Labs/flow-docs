@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import SearchBar from '@theme/SearchBar';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
@@ -13,21 +14,17 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <span className="rvlt-eyebrow">the user guide</span>
+        <span className="rvlt-eyebrow">the RVLT Flow guide</span>
         <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-          {siteConfig.title}
+          What do you need a hand with?
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link className="button button--primary button--lg" to="/docs/intro">
-            Read the guide
-          </Link>
-          <Link
-            className="button button--outline button--lg"
-            to="https://flow.rvlt.app">
-            Open Flow ↗
-          </Link>
+        <div className={styles.searchWrap}>
+          <SearchBar />
         </div>
+        <p className={styles.secondaryLink}>
+          Or just <Link to="https://flow.rvlt.app">open Flow ↗</Link>
+        </p>
       </div>
     </header>
   );

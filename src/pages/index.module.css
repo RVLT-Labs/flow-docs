@@ -31,10 +31,40 @@
   }
 }
 
-.buttons {
+/* Blow the navbar-sized search input up into the hero's primary,
+   help-center-style search box (Navan/Zendesk/Bard pattern — search leads,
+   not a button). Selectors are broad (input[type='search'] fallback) since
+   the search-local theme's SearchBar isn't a CSS-modules component. */
+.searchWrap {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.searchWrap :global(.navbar__search),
+.searchWrap :global(.DocSearch) {
+  width: 100%;
+  max-width: 560px;
+}
+
+.searchWrap :global(.navbar__search-input),
+.searchWrap input[type='search'] {
+  width: 100%;
+  max-width: 560px;
+  height: 3.25rem;
+  padding: 0 1.5rem 0 3rem;
+  font-size: 1rem;
+  font-family: var(--rvlt-font-sans);
+  color: var(--rvlt-ink);
+  background-color: var(--rvlt-card);
+  background-image: none;
+  border: 2px solid var(--rvlt-border);
+  border-radius: var(--rvlt-r-pill);
+  box-shadow: var(--rvlt-sh-card);
+}
+
+.secondaryLink {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--rvlt-muted);
 }

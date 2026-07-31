@@ -44,9 +44,17 @@
   --rvlt-ok-soft: rgba(62, 207, 122, 0.14);
   --rvlt-warn-soft: rgba(235, 165, 58, 0.15);
   --rvlt-out-soft: rgba(224, 54, 61, 0.18);
+  /* categorical/module ramp (§3.7/§15.5) — for module wayfinding, avatars,
+     dataviz series. Never red (reserved for action/alert). */
   --rvlt-blue: #5b8def;
   --rvlt-blue-soft: rgba(91, 141, 239, 0.15);
+  --rvlt-amber: #eba53a;
+  --rvlt-green: #3ecf7a;
   --rvlt-purple: #9b82e6;
+  --rvlt-coral: #ef7e55;
+  --rvlt-teal: #3fc8be;
+  --rvlt-pink: #e875ac;
+  --rvlt-lime: #afc44e;
   --rvlt-scrim: rgba(14, 12, 10, 0.66);
   --rvlt-select: rgba(224, 54, 61, 0.2);
   --rvlt-link: #5b8def;
@@ -54,6 +62,7 @@
   --rvlt-sh-card: 0 3px 0 #0c0a08;
   --rvlt-sh-hover: 0 7px 0 #0c0a08;
   --rvlt-sh-press: 0 1px 0 #0c0a08;
+  --rvlt-sh-stk: 2px 4px 0 rgba(0, 0, 0, 0.5);
   --rvlt-lit: inset 0 1px 0 rgba(255, 253, 248, 0.14);
   --rvlt-navbar-bg: rgba(18, 16, 13, 0.93);
   /* the one sanctioned ≤.12-alpha radial stage-wash (§4/§5) */
@@ -174,7 +183,13 @@
   --rvlt-out-soft: #fbe7e3;
   --rvlt-blue: #2f6bd6;
   --rvlt-blue-soft: #e2ecfb;
+  --rvlt-amber: #e79a2b;
+  --rvlt-green: #2ea65c;
   --rvlt-purple: #7a5cd0;
+  --rvlt-coral: #cc5e2e;
+  --rvlt-teal: #1c8b83;
+  --rvlt-pink: #c2487e;
+  --rvlt-lime: #6e8c12;
   --rvlt-scrim: rgba(40, 30, 15, 0.45);
   --rvlt-select: rgba(193, 34, 41, 0.16);
   --rvlt-link: #2f6bd6;
@@ -182,6 +197,7 @@
   --rvlt-sh-card: 0 3px 0 var(--rvlt-line-2);
   --rvlt-sh-hover: 0 7px 0 var(--rvlt-line-2);
   --rvlt-sh-press: 0 1px 0 var(--rvlt-line-2);
+  --rvlt-sh-stk: 2px 4px 0 rgba(40, 30, 15, 0.13);
   --rvlt-lit: inset 0 1px 0 rgba(255, 253, 248, 0.14);
   --rvlt-navbar-bg: rgba(244, 238, 225, 0.93);
   --rvlt-spotlight: rgba(193, 34, 41, 0.08);
@@ -395,6 +411,47 @@ button:focus-visible,
   box-shadow: var(--rvlt-sh-hover);
 }
 
+/* ================= Patch (feature icon) — §9/§10: 42px, categorical bg,
+   2px cream border, sticker shadow, white-stroke glyph. Used for topic/
+   module wayfinding — never the red accent (§15.5). ================= */
+.rvlt-patch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border-radius: var(--rvlt-r-sm);
+  border: 2px solid #fffdf8;
+  box-shadow: var(--rvlt-sh-stk);
+}
+
+.rvlt-patch svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff;
+  stroke-width: 2.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rvlt-patch--blue {
+  background: var(--rvlt-blue);
+}
+.rvlt-patch--amber {
+  background: var(--rvlt-amber);
+}
+.rvlt-patch--green {
+  background: var(--rvlt-green);
+}
+.rvlt-patch--purple {
+  background: var(--rvlt-purple);
+}
+.rvlt-patch--coral {
+  background: var(--rvlt-coral);
+}
+
 /* ================= Admonitions — soft fill + solid accent, matches badge pattern (§9) =================
  * Docusaurus renders `.theme-admonition.theme-admonition-<type> alert alert--<variant>`
  * (note→secondary, tip→success, info→info, caution/warning→warning, danger→danger).
@@ -480,6 +537,44 @@ code {
   border: 1px solid var(--rvlt-line);
   border-radius: var(--rvlt-r-sm);
   padding: 0.15em 0.4em;
+}
+
+/* ================= Numbered steps — stepper-inspired instructional lists
+   (§9 Stepper: 28px rings). Guide articles read as walked-through steps
+   (Fabric/Hims/Cloudflare pattern), not a plain browser-numbered list. Only
+   top-level ol in doc body copy — an ol nested inside an admonition/callout
+   keeps default numbering, so this doesn't hijack every small aside list. ================= */
+.theme-doc-markdown > ol {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  counter-reset: rvlt-step;
+}
+
+.theme-doc-markdown > ol > li {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1.25rem;
+  counter-increment: rvlt-step;
+}
+
+.theme-doc-markdown > ol > li::before {
+  content: counter(rvlt-step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-family: var(--rvlt-font-display);
+  font-weight: 800;
+  font-size: 0.875rem;
+  color: var(--rvlt-ink);
+  background: var(--rvlt-elev);
+  border: 2px solid var(--rvlt-line-2);
+  border-radius: 50%;
 }
 
 /* ================= Tables ================= */
