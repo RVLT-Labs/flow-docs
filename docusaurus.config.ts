@@ -15,11 +15,14 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  // Open decision (see gearflow issue #959): final hosting domain — a
-  // subdomain off flow.rvlt.app vs. a standalone docs.* domain. Placeholder
-  // until that's settled; update alongside the deploy target.
-  url: 'https://docs.flow.rvlt.app',
-  baseUrl: '/',
+  // Deploy target: GitHub Pages (project site, no custom domain yet — see
+  // gearflow #959's open "subdomain off flow.rvlt.app vs. docs.* domain"
+  // decision). A project site with no custom domain is served under
+  // /<repo>/, hence baseUrl below. If a custom domain lands later, both
+  // of these need to change together: url -> the custom domain, baseUrl
+  // -> '/' (custom domains serve from root) — plus a static/CNAME file.
+  url: 'https://rvlt-labs.github.io',
+  baseUrl: '/flow-docs/',
 
   organizationName: 'RVLT-Labs',
   projectName: 'flow-docs',
