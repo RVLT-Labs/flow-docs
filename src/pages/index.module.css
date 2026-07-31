@@ -47,6 +47,19 @@
   max-width: 560px;
 }
 
+/* On first hover/focus, the search plugin's underlying autocomplete.js lazily
+   wraps the <input> in its own `<span style="display: inline-block">` — an
+   *inline style*, so only an !important rule can beat it. Without this, that
+   auto-sized wrapper becomes the input's containing block, its `width: 100%`
+   below resolves against the wrapper's shrink-to-fit width instead of our
+   560px container, and the box collapses to the browser's default input
+   size the instant you hover it. Force the wrapper to stay a full-width
+   block so sizing holds before AND after autocomplete.js injects it. */
+.searchWrap :global([class*='searchBar_']) {
+  display: block !important;
+  width: 100%;
+}
+
 .searchWrap :global(.navbar__search-input),
 .searchWrap input[type='search'] {
   width: 100%;
