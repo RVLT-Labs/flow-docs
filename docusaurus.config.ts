@@ -111,34 +111,10 @@ const config: Config = {
         },
       ],
     },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Guide',
-          items: [
-            {
-              label: 'Getting started',
-              to: '/',
-            },
-          ],
-        },
-        {
-          title: 'RVLT',
-          items: [
-            {
-              label: 'Open Flow',
-              href: 'https://flow.rvlt.app',
-            },
-            {
-              label: 'Design language',
-              href: 'https://github.com/RVLT-Labs/rvlt-designlanguage',
-            },
-          ],
-        },
-      ],
-      copyright: `Built for production companies, by a production company. © ${new Date().getFullYear()} RVLT Labs.`,
-    },
+    // No `footer` config here — src/theme/Footer fully replaces the classic
+    // theme's footer component with a custom one (a 5-page site doesn't
+    // need the stock multi-column link-grid layout), so themeConfig.footer
+    // would just be dead config.
     prism: {
       theme: prismThemes.oneLight,
       darkTheme: prismThemes.oneDark,
