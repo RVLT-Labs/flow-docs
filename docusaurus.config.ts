@@ -7,7 +7,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Flow',
   titleDelimiter: '·',
-  tagline: 'The user guide for RVLT Flow.',
+  // Voice pulled from rvlt-designlanguage's own site (dry wit, concrete,
+  // production-crew vocabulary) rather than generic docs-site copy.
+  tagline: "RTFM. It'll be easier for us all.",
   favicon: 'img/rvlt-mark.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future

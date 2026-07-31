@@ -14,7 +14,9 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <span className="rvlt-eyebrow">the RVLT Flow guide</span>
+        <span className="rvlt-eyebrow">
+          we wrote this so you don't have to ask
+        </span>
         <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
           What do you need a hand with?
         </Heading>
@@ -35,7 +37,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={siteConfig.title}
-      description="The user guide for RVLT Flow — production operations software.">
+      description="The guide for RVLT Flow — built for production companies, by a production company.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
