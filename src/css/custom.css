@@ -1,0 +1,577 @@
+/**
+ * RVLT Flow docs theme.
+ *
+ * Source of truth: https://github.com/RVLT-Labs/rvlt-designlanguage DESIGN.md
+ * (tokens mirrored from tokens.json / dist/globals.css, v1.1.1). Dark
+ * "espresso" is the primary surface, `[data-theme='light']` ("Paper") is the
+ * documented alternate. Do not hand-tune a color here without checking it
+ * against a token in DESIGN.md §3 / Appendix A first.
+ */
+
+/* Self-hosted brand fonts (Fontsource) — see DESIGN.md §5. */
+@import '@fontsource/archivo/700.css';
+@import '@fontsource/archivo/800.css';
+@import '@fontsource/archivo/900.css';
+@import '@fontsource/hanken-grotesk/400.css';
+@import '@fontsource/hanken-grotesk/500.css';
+@import '@fontsource/hanken-grotesk/600.css';
+@import '@fontsource/kalam/400.css';
+@import '@fontsource/kalam/700.css';
+@import '@fontsource/geist-mono/400.css';
+@import '@fontsource/geist-mono/500.css';
+@import '@fontsource/geist-mono/600.css';
+@import '@fontsource/baloo-2/700.css';
+
+:root {
+  /* ===== RVLT primitives — dark "espresso" (default, DESIGN.md §3.1) ===== */
+  --rvlt-paper: #141210;
+  --rvlt-paper-2: #1a1613;
+  --rvlt-card: #211c17;
+  --rvlt-elev: #2a241d;
+  --rvlt-ink: #f5efe2;
+  --rvlt-ink-2: #cdc4b2;
+  --rvlt-muted: #9e9483;
+  --rvlt-faint: #6e665a;
+  --rvlt-line: #332c24;
+  --rvlt-line-2: #473e32;
+  --rvlt-red: #e0363d;
+  --rvlt-red-700: #b21f26;
+  --rvlt-red-soft: rgba(224, 54, 61, 0.16);
+  --rvlt-ok: #4fd888;
+  --rvlt-warn: #eba53a;
+  --rvlt-rep: #b6ac9a;
+  --rvlt-t-out: #f26f73;
+  --rvlt-ok-soft: rgba(62, 207, 122, 0.14);
+  --rvlt-warn-soft: rgba(235, 165, 58, 0.15);
+  --rvlt-out-soft: rgba(224, 54, 61, 0.18);
+  --rvlt-blue: #5b8def;
+  --rvlt-blue-soft: rgba(91, 141, 239, 0.15);
+  --rvlt-purple: #9b82e6;
+  --rvlt-scrim: rgba(14, 12, 10, 0.66);
+  --rvlt-select: rgba(224, 54, 61, 0.2);
+  --rvlt-link: #5b8def;
+  --rvlt-border: var(--rvlt-line-2); /* 2px outline = line-2 on dark (§7) */
+  --rvlt-sh-card: 0 3px 0 #0c0a08;
+  --rvlt-sh-hover: 0 7px 0 #0c0a08;
+  --rvlt-sh-press: 0 1px 0 #0c0a08;
+  --rvlt-lit: inset 0 1px 0 rgba(255, 253, 248, 0.14);
+  --rvlt-navbar-bg: rgba(18, 16, 13, 0.93);
+  /* the one sanctioned ≤.12-alpha radial stage-wash (§4/§5) */
+  --rvlt-spotlight: rgba(224, 54, 61, 0.12);
+
+  /* ===== radius (§7) ===== */
+  --rvlt-r-sm: 8px;
+  --rvlt-r: 14px;
+  --rvlt-r-lg: 20px;
+  --rvlt-r-pill: 999px;
+
+  /* ===== fonts (§5) ===== */
+  --rvlt-font-display: 'Archivo', sans-serif;
+  --rvlt-font-sans: 'Hanken Grotesk', system-ui, sans-serif;
+  --rvlt-font-hand: 'Kalam', cursive;
+  --rvlt-font-wordmark: 'Baloo 2', cursive;
+  --rvlt-font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  /* ================= Infima wiring ================= */
+  --ifm-color-primary: var(--rvlt-red);
+  --ifm-color-primary-dark: var(--rvlt-red-700);
+  --ifm-color-primary-darker: #a11c22;
+  --ifm-color-primary-darkest: #6c1114;
+  --ifm-color-primary-light: #e34c52;
+  --ifm-color-primary-lighter: #e76268;
+  --ifm-color-primary-lightest: #f1a4a8;
+  --ifm-color-secondary: var(--rvlt-paper-2);
+  --ifm-color-success: var(--rvlt-ok);
+  --ifm-color-info: var(--rvlt-blue);
+  --ifm-color-warning: var(--rvlt-warn);
+  --ifm-color-danger: var(--rvlt-red);
+
+  --ifm-color-emphasis-0: var(--rvlt-paper);
+  --ifm-color-emphasis-100: var(--rvlt-paper-2);
+  --ifm-color-emphasis-200: var(--rvlt-card);
+  --ifm-color-emphasis-300: var(--rvlt-elev);
+  --ifm-color-emphasis-400: var(--rvlt-line-2);
+  --ifm-color-emphasis-500: var(--rvlt-muted);
+  --ifm-color-emphasis-600: var(--rvlt-ink-2);
+  --ifm-color-emphasis-700: var(--rvlt-ink-2);
+  --ifm-color-emphasis-800: var(--rvlt-ink);
+  --ifm-color-emphasis-900: var(--rvlt-ink);
+  --ifm-color-emphasis-1000: var(--rvlt-ink);
+
+  --ifm-background-color: var(--rvlt-paper);
+  --ifm-background-surface-color: var(--rvlt-card);
+  --ifm-font-color-base: var(--rvlt-ink);
+  --ifm-font-color-secondary: var(--rvlt-ink-2);
+  --ifm-heading-color: var(--rvlt-ink);
+  --ifm-hr-border-color: var(--rvlt-line);
+  --ifm-toc-border-color: var(--rvlt-line);
+  --ifm-table-border-color: var(--rvlt-line);
+  --ifm-table-stripe-background: var(--rvlt-paper-2);
+
+  --ifm-font-family-base: var(--rvlt-font-sans);
+  --ifm-heading-font-family: var(--rvlt-font-display);
+  --ifm-font-family-monospace: var(--rvlt-font-mono);
+  --ifm-font-weight-semibold: 600;
+  --ifm-heading-font-weight: 800;
+  --ifm-code-font-size: 90%;
+
+  --ifm-global-radius: var(--rvlt-r);
+  --ifm-code-border-radius: var(--rvlt-r-sm);
+  --ifm-pagination-nav-border-radius: var(--rvlt-r);
+  --ifm-alert-border-radius: var(--rvlt-r);
+  --ifm-card-border-radius: var(--rvlt-r-lg);
+  --ifm-button-border-radius: var(--rvlt-r-pill);
+
+  --ifm-link-color: var(--rvlt-link);
+  --ifm-link-hover-color: var(--rvlt-link);
+  --ifm-link-hover-decoration: underline;
+
+  --ifm-navbar-background-color: var(--rvlt-navbar-bg);
+  --ifm-navbar-shadow: none;
+  --ifm-navbar-link-color: var(--rvlt-ink-2);
+  --ifm-navbar-link-hover-color: var(--rvlt-ink);
+
+  --ifm-footer-background-color: var(--rvlt-paper-2);
+  --ifm-footer-color: var(--rvlt-ink-2);
+  --ifm-footer-link-color: var(--rvlt-ink-2);
+  --ifm-footer-link-hover-color: var(--rvlt-ink);
+  --ifm-footer-title-color: var(--rvlt-ink);
+
+  --ifm-menu-color: var(--rvlt-ink-2);
+  --ifm-menu-color-active: var(--rvlt-red);
+  --ifm-menu-color-background-active: var(--rvlt-red-soft);
+  --ifm-menu-color-background-hover: var(--rvlt-elev);
+
+  --ifm-scrollbar-track-background-color: var(--rvlt-paper-2);
+  --ifm-scrollbar-thumb-background-color: var(--rvlt-line-2);
+  --ifm-scrollbar-thumb-hover-background-color: var(--rvlt-muted);
+  --ifm-selection-background: var(--rvlt-select);
+
+  --docusaurus-highlighted-code-line-bg: var(--rvlt-elev);
+}
+
+/* ===== RVLT primitives — light "Paper" (opt-in alternate, DESIGN.md §3.2) ===== */
+[data-theme='light'] {
+  --rvlt-paper: #f4eee1;
+  --rvlt-paper-2: #ede4d2;
+  --rvlt-card: #fffdf8;
+  --rvlt-elev: #fffdf8;
+  --rvlt-ink: #1d1a15;
+  --rvlt-ink-2: #4b4539;
+  --rvlt-muted: #7d7565;
+  --rvlt-faint: #a89e89;
+  --rvlt-line: #e4dac3;
+  --rvlt-line-2: #d8ccb0;
+  --rvlt-red: #c12229;
+  --rvlt-red-700: #9c1b21;
+  --rvlt-red-soft: #fbe7e3;
+  --rvlt-ok: #2ea65c;
+  --rvlt-warn: #c98a14;
+  --rvlt-rep: #8a8270;
+  --rvlt-t-out: #9c1b21;
+  --rvlt-ok-soft: #e7f5ec;
+  --rvlt-warn-soft: #fbf0d6;
+  --rvlt-out-soft: #fbe7e3;
+  --rvlt-blue: #2f6bd6;
+  --rvlt-blue-soft: #e2ecfb;
+  --rvlt-purple: #7a5cd0;
+  --rvlt-scrim: rgba(40, 30, 15, 0.45);
+  --rvlt-select: rgba(193, 34, 41, 0.16);
+  --rvlt-link: #2f6bd6;
+  --rvlt-border: var(--rvlt-ink); /* 2px outline = ink on light (§7) */
+  --rvlt-sh-card: 0 3px 0 var(--rvlt-line-2);
+  --rvlt-sh-hover: 0 7px 0 var(--rvlt-line-2);
+  --rvlt-sh-press: 0 1px 0 var(--rvlt-line-2);
+  --rvlt-lit: inset 0 1px 0 rgba(255, 253, 248, 0.14);
+  --rvlt-navbar-bg: rgba(244, 238, 225, 0.93);
+  --rvlt-spotlight: rgba(193, 34, 41, 0.08);
+
+  --ifm-color-primary: var(--rvlt-red);
+  --ifm-color-primary-dark: var(--rvlt-red-700);
+  --ifm-color-primary-darker: #841619;
+  --ifm-color-primary-darkest: #3f0b0d;
+  --ifm-color-primary-light: #d7262e;
+  --ifm-color-primary-lighter: #dc3a41;
+  --ifm-color-primary-lightest: #e87b80;
+  --ifm-color-secondary: var(--rvlt-paper-2);
+  --ifm-color-success: var(--rvlt-ok);
+  --ifm-color-info: var(--rvlt-blue);
+  --ifm-color-warning: var(--rvlt-warn);
+  --ifm-color-danger: var(--rvlt-red);
+
+  --ifm-color-emphasis-0: var(--rvlt-paper);
+  --ifm-color-emphasis-100: var(--rvlt-paper-2);
+  --ifm-color-emphasis-200: var(--rvlt-card);
+  --ifm-color-emphasis-300: var(--rvlt-elev);
+  --ifm-color-emphasis-400: var(--rvlt-line-2);
+  --ifm-color-emphasis-500: var(--rvlt-muted);
+  --ifm-color-emphasis-600: var(--rvlt-ink-2);
+  --ifm-color-emphasis-700: var(--rvlt-ink-2);
+  --ifm-color-emphasis-800: var(--rvlt-ink);
+  --ifm-color-emphasis-900: var(--rvlt-ink);
+  --ifm-color-emphasis-1000: var(--rvlt-ink);
+
+  --ifm-background-color: var(--rvlt-paper);
+  --ifm-background-surface-color: var(--rvlt-card);
+  --ifm-font-color-base: var(--rvlt-ink);
+  --ifm-font-color-secondary: var(--rvlt-ink-2);
+  --ifm-heading-color: var(--rvlt-ink);
+  --ifm-hr-border-color: var(--rvlt-line);
+  --ifm-toc-border-color: var(--rvlt-line);
+  --ifm-table-border-color: var(--rvlt-line);
+  --ifm-table-stripe-background: var(--rvlt-paper-2);
+
+  --ifm-navbar-background-color: var(--rvlt-navbar-bg);
+  --ifm-navbar-link-color: var(--rvlt-ink-2);
+  --ifm-navbar-link-hover-color: var(--rvlt-ink);
+
+  --ifm-footer-background-color: var(--rvlt-paper-2);
+  --ifm-footer-color: var(--rvlt-ink-2);
+  --ifm-footer-link-color: var(--rvlt-ink-2);
+  --ifm-footer-link-hover-color: var(--rvlt-ink);
+  --ifm-footer-title-color: var(--rvlt-ink);
+
+  --ifm-menu-color: var(--rvlt-ink-2);
+  --ifm-menu-color-active: var(--rvlt-red);
+  --ifm-menu-color-background-active: var(--rvlt-red-soft);
+  --ifm-menu-color-background-hover: var(--rvlt-elev);
+
+  --ifm-scrollbar-track-background-color: var(--rvlt-paper-2);
+  --ifm-scrollbar-thumb-background-color: var(--rvlt-line-2);
+  --ifm-selection-background: var(--rvlt-select);
+
+  --docusaurus-highlighted-code-line-bg: var(--rvlt-elev);
+}
+
+/* ================= Base ================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--rvlt-font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--rvlt-font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 2px focus ring in red, offset so it clears the 2px outline (§9.1). */
+a:focus-visible,
+button:focus-visible,
+.button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--rvlt-red);
+  outline-offset: 2px;
+  border-radius: var(--rvlt-r-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ================= Navbar — frosted glass (§9) ================= */
+.navbar {
+  background: var(--rvlt-navbar-bg);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom: 1px solid var(--rvlt-line-2);
+  box-shadow: var(--rvlt-lit);
+}
+
+.navbar__title {
+  font-family: var(--rvlt-font-wordmark);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-size: 1.3125rem;
+}
+
+.navbar__link {
+  font-weight: 500;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--rvlt-red);
+}
+
+.navbar-sidebar {
+  background: var(--rvlt-paper);
+}
+
+/* ================= Sentence case everywhere (§5.2) — no shouting caps ================= */
+.navbar__link,
+.menu__link,
+.footer__title,
+.footer__link-item,
+.pagination-nav__label,
+.table-of-contents__link,
+.breadcrumbs__link {
+  text-transform: none;
+}
+
+/* ================= Buttons — pill, hard offset shadow, tactile press (§8/§9) ================= */
+.button {
+  font-family: var(--rvlt-font-sans);
+  font-weight: 600;
+  border-width: 2px;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.button--primary {
+  background: var(--rvlt-red);
+  border-color: var(--rvlt-red);
+  color: #fff;
+  box-shadow: 0 3px 0 var(--rvlt-red-700);
+}
+
+.button--primary:hover {
+  background: var(--rvlt-red);
+  border-color: var(--rvlt-red);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 var(--rvlt-red-700);
+}
+
+.button--primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--rvlt-red-700);
+}
+
+.button--outline,
+.button--secondary {
+  background: transparent;
+  border-color: var(--rvlt-border);
+  color: var(--rvlt-ink);
+}
+
+.button--outline:hover,
+.button--secondary:hover {
+  background: var(--rvlt-elev);
+  border-color: var(--rvlt-border);
+  color: var(--rvlt-ink);
+  transform: translateY(-1px);
+}
+
+.button--outline:active,
+.button--secondary:active {
+  transform: translateY(1px);
+}
+
+/* ================= Cards / callouts — 2px outline + hard offset shadow, no blur (§7/§9) ================= */
+.card {
+  background: var(--rvlt-card);
+  border: 2px solid var(--rvlt-border);
+  box-shadow: var(--rvlt-sh-card);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--rvlt-sh-hover);
+}
+
+/* ================= Admonitions — soft fill + solid accent, matches badge pattern (§9) =================
+ * Docusaurus renders `.theme-admonition.theme-admonition-<type> alert alert--<variant>`
+ * (note→secondary, tip→success, info→info, caution/warning→warning, danger→danger).
+ * Override the actual classes directly (compound selector, so it beats Infima's
+ * own `.alert--*` rules regardless of stylesheet order) rather than the alert
+ * color variables, which produce a solid-fill look, not the soft-fill card pattern.
+ */
+.theme-admonition {
+  border: 2px solid var(--rvlt-border);
+  border-radius: var(--rvlt-r);
+  box-shadow: var(--rvlt-sh-card);
+  color: var(--rvlt-ink);
+}
+
+/* Infima uppercases admonition titles by default — sentence case, no shouting (§5.2) */
+.theme-admonition [class*='admonitionHeading'] {
+  font-family: var(--rvlt-font-display);
+  color: var(--rvlt-ink);
+  text-transform: none;
+}
+
+.theme-admonition-note {
+  background: var(--rvlt-elev);
+  border-left: 4px solid var(--rvlt-ink-2);
+}
+
+.theme-admonition-tip {
+  background: var(--rvlt-ok-soft);
+  border-left: 4px solid var(--rvlt-ok);
+}
+
+.theme-admonition-tip [class*='admonitionIcon'] svg {
+  fill: var(--rvlt-ok);
+  color: var(--rvlt-ok);
+}
+
+.theme-admonition-info {
+  background: var(--rvlt-blue-soft);
+  border-left: 4px solid var(--rvlt-blue);
+}
+
+.theme-admonition-info [class*='admonitionIcon'] svg {
+  fill: var(--rvlt-blue);
+  color: var(--rvlt-blue);
+}
+
+.theme-admonition-caution,
+.theme-admonition-warning {
+  background: var(--rvlt-warn-soft);
+  border-left: 4px solid var(--rvlt-warn);
+}
+
+.theme-admonition-caution [class*='admonitionIcon'] svg,
+.theme-admonition-warning [class*='admonitionIcon'] svg {
+  fill: var(--rvlt-warn);
+  color: var(--rvlt-warn);
+}
+
+.theme-admonition-danger {
+  background: var(--rvlt-red-soft);
+  border-left: 4px solid var(--rvlt-red);
+}
+
+.theme-admonition-danger [class*='admonitionIcon'] svg {
+  fill: var(--rvlt-red);
+  color: var(--rvlt-red);
+}
+
+/* ================= Code blocks — card surface + mono, no blur (§7/§5.4) ================= */
+div[class^='codeBlockContainer'] {
+  border: 2px solid var(--rvlt-border);
+  border-radius: var(--rvlt-r);
+  box-shadow: var(--rvlt-sh-card);
+}
+
+pre,
+code {
+  font-family: var(--rvlt-font-mono);
+}
+
+:not(pre) > code {
+  background: var(--rvlt-elev);
+  border: 1px solid var(--rvlt-line);
+  border-radius: var(--rvlt-r-sm);
+  padding: 0.15em 0.4em;
+}
+
+/* ================= Tables ================= */
+table {
+  border: 2px solid var(--rvlt-border);
+  border-radius: var(--rvlt-r);
+  overflow: hidden;
+  display: table;
+}
+
+table thead tr {
+  background: var(--rvlt-elev);
+}
+
+/* ================= Pagination nav — tactile cards ================= */
+.pagination-nav__link {
+  border: 2px solid var(--rvlt-border);
+  border-radius: var(--rvlt-r);
+  box-shadow: var(--rvlt-sh-card);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.pagination-nav__link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--rvlt-sh-hover);
+  border-color: var(--rvlt-border);
+}
+
+/* ================= Footer =================
+ * `.footer--dark` hardcodes its own background AND text colors (it's built
+ * for an always-navy footer regardless of site theme); the compound
+ * selectors below outrank that single-class rule so the footer actually
+ * follows the warm paper-2 / ink tokens per theme instead of Infima's fixed
+ * dark-navy-plus-white-text look (which goes illegible on the light theme).
+ */
+.footer.footer--dark {
+  --ifm-footer-background-color: var(--rvlt-paper-2);
+  --ifm-footer-color: var(--rvlt-ink-2);
+  --ifm-footer-link-color: var(--rvlt-ink-2);
+  --ifm-footer-link-hover-color: var(--rvlt-ink);
+  --ifm-footer-title-color: var(--rvlt-ink);
+  background-color: var(--rvlt-paper-2);
+  color: var(--rvlt-ink-2);
+  border-top: 2px solid var(--rvlt-line-2);
+}
+
+.footer.footer--dark .footer__title {
+  color: var(--rvlt-ink);
+}
+
+.footer.footer--dark .footer__link-item {
+  color: var(--rvlt-ink-2);
+}
+
+.footer.footer--dark .footer__link-item:hover {
+  color: var(--rvlt-ink);
+}
+
+.footer.footer--dark .footer__copyright {
+  color: var(--rvlt-muted);
+}
+
+.footer__title {
+  font-family: var(--rvlt-font-display);
+  font-weight: 700;
+}
+
+/* ================= Handwritten eyebrow utility (§5.1/§5.2 — Kalam, sentence case, red) ================= */
+.rvlt-eyebrow {
+  display: inline-block;
+  font-family: var(--rvlt-font-hand);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--rvlt-red);
+  transform: rotate(-1.5deg);
+}
+
+/* ================= Sidebar menu — selected state uses the resting lit edge (§9.1) ================= */
+.menu__link--active:not(.menu__link--sublist) {
+  box-shadow: var(--rvlt-lit);
+}
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--rvlt-line) !important;
+}
+
+/* ================= Selection ================= */
+::selection {
+  background: var(--rvlt-select);
+}
