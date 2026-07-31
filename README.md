@@ -71,13 +71,29 @@ admonitions, code blocks, numbered steps) renders correctly; it isn't part of th
 guide. The real v1 information architecture is in gearflow#959; nothing under `docs/`
 should be treated as authoritative product documentation until that lands.
 
+## Deploy — GitHub Pages
+
+`.github/workflows/deploy-pages.yml` builds with pnpm and deploys to GitHub Pages
+(`actions/deploy-pages`) on every push to `main`, or manually via workflow_dispatch.
+
+**One-time manual step** (not doable via the GitHub API/MCP tools this session had):
+in the repo's **Settings → Pages → Build and deployment**, set **Source** to
+**GitHub Actions**. Until that's flipped, the workflow will run but the deploy job
+fails with a clear error.
+
+No custom domain yet, so it's a project site served at
+`https://rvlt-labs.github.io/flow-docs/` — `url`/`baseUrl` in `docusaurus.config.ts`
+are set accordingly. If a custom domain lands later (the subdomain-off-`flow.rvlt.app`
+vs. standalone `docs.*` decision below), both need to change together: `url` → the
+custom domain, `baseUrl` → `/` (custom domains serve from root), plus a
+`static/CNAME` file.
+
 ## Open decisions (gearflow#959)
 
 Not resolved by this bootstrap — flagged here so they aren't lost:
 
-- **Hosting/deploy target.** `docusaurus.config.ts`'s `url` is a placeholder
-  (`https://docs.flow.rvlt.app`) pending a decision on subdomain vs. path off
-  `flow.rvlt.app`, and on Vercel/Netlify/GitHub Pages/Coolify as the deploy target.
+- **Custom domain.** Subdomain off `flow.rvlt.app` vs. a standalone `docs.*` domain —
+  see the deploy section above for what changes when this lands.
 - **Search provider at scale.** Local search is wired up and working; revisit for Algolia
   DocSearch if/when content volume outgrows a client-side index.
 - **Content ownership/cadence.**
