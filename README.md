@@ -72,9 +72,14 @@ inventory · Warehouse · Crew · Clients & suppliers · Maintenance & complianc
 Settings & administration · Integrations & AI · Fix a problem · Glossary), each an
 overview page plus verb-first task pages. Every page is an outline stub carrying a
 "🚧 Not written yet" admonition and a "What this page will cover" outline — the
-glossary is the one page seeded with real content. [STYLE.md](./STYLE.md) documents
-the page templates, stub convention, voice, and the agreed v1 writing scope (the
-core rental workflow sections first). `docs/intro.mdx`
+glossary is the one page seeded with real content.
+
+Writing articles is a defined pipeline, not ad-hoc prose: [STYLE.md](./STYLE.md)
+(structure, page types, v1 scope) + [VOICE.md](./VOICE.md) (voice, terminology
+law, the AI-slop checklist) + [`templates/`](./templates/) (page skeletons) +
+the `write-article` skill (`.claude/skills/write-article/`), which turns a raw
+brain dump pasted into a Claude session into a drafted, slop-checked,
+build-verified article on a branch. `docs/intro.mdx`
 ("Theme preview," `unlisted: true`) is a separate internal QA page — off the sidebar and
 out of search, reachable only by direct link — that exists to prove the theme (headings,
 admonitions, code blocks, numbered steps) renders correctly; it isn't part of the public
