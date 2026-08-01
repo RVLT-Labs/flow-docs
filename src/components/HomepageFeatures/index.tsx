@@ -58,6 +58,50 @@ function LayersIcon() {
   );
 }
 
+function RouteIcon() {
+  return (
+    <svg viewBox="0 0 24 24">
+      <circle cx="6" cy="19" r="3" />
+      <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+      <circle cx="18" cy="5" r="3" />
+    </svg>
+  );
+}
+
+function FolderIcon() {
+  return (
+    <svg viewBox="0 0 24 24">
+      <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+    </svg>
+  );
+}
+
+function BotIcon() {
+  return (
+    <svg viewBox="0 0 24 24">
+      <path d="M12 8V4H8" />
+      <rect width="16" height="12" x="4" y="8" rx="2" />
+      <path d="M2 14h2" />
+      <path d="M20 14h2" />
+      <path d="M15 13v2" />
+      <path d="M9 13v2" />
+    </svg>
+  );
+}
+
+function LifeBuoyIcon() {
+  return (
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="m4.93 4.93 4.24 4.24" />
+      <path d="m14.83 9.17 4.24-4.24" />
+      <path d="m14.83 14.83 4.24 4.24" />
+      <path d="m9.17 14.83-4.24 4.24" />
+      <circle cx="12" cy="12" r="4" />
+    </svg>
+  );
+}
+
 type Topic = {
   title: string;
   description: string;
@@ -79,45 +123,74 @@ const GETTING_STARTED: Topic = {
 };
 
 // Topic cards, not a nested dev-docs tree — mirrors how help centers
-// (Navan "Browse top categories", Revolut's topic list) organize by task,
-// not module hierarchy. Maps 1:1 to the product's own modules, not invented
-// content — each links to a "guide is being written" placeholder.
+// (Navan "Browse top categories", Revolut's topic list) organize by
+// business function, not literal nav labels. Each card links to a section
+// overview in the scaffolded guide tree (gearflow#959); the long tail
+// (clients/suppliers, maintenance, settings) is reachable from the sidebar
+// and search rather than crowding the grid.
 const TOPICS: Topic[] = [
   {
-    title: 'Projects & quotes',
-    description: 'Build quotes, track status, get client sign-off.',
-    to: '/docs/projects-quotes',
-    icon: <ReceiptIcon />,
+    title: 'The rental workflow',
+    description: 'The whole job, end to end — enquiry to invoice.',
+    to: '/docs/rental-workflow',
+    icon: <RouteIcon />,
     patchColor: 'amber',
   },
   {
-    title: 'Warehouse & fulfillment',
-    description: 'Pack, dispatch, and return gear without a clash.',
-    to: '/docs/warehouse-fulfillment',
-    icon: <WarehouseIcon />,
+    title: 'Projects',
+    description: 'Build the job: gear, dates, crew, paperwork.',
+    to: '/docs/projects',
+    icon: <FolderIcon />,
+    patchColor: 'blue',
+  },
+  {
+    title: 'Quotes & invoicing',
+    description: 'Price it, send it, get paid.',
+    to: '/docs/quotes-invoicing',
+    icon: <ReceiptIcon />,
     patchColor: 'green',
   },
   {
-    title: 'Crew',
-    description: 'Schedule crew, check availability, send call sheets.',
-    to: '/docs/crew',
-    icon: <UsersIcon />,
+    title: 'Assets & inventory',
+    description: 'Models, assets, bulk stock, and kits.',
+    to: '/docs/assets-inventory',
+    icon: <LayersIcon />,
+    patchColor: 'coral',
+  },
+  {
+    title: 'Warehouse',
+    description: 'Prep, deploy, and return gear without a clash.',
+    to: '/docs/warehouse',
+    icon: <WarehouseIcon />,
     patchColor: 'purple',
   },
   {
-    title: 'Assets & kits',
-    description: 'Manage inventory, build kits, track maintenance.',
-    to: '/docs/assets-kits',
-    icon: <LayersIcon />,
-    patchColor: 'coral',
+    title: 'Crew',
+    description: 'Schedule people, spot the gaps, track the hours.',
+    to: '/docs/crew',
+    icon: <UsersIcon />,
+    patchColor: 'green',
+  },
+  {
+    title: 'Integrations & AI',
+    description: 'Xero, WooCommerce, webhooks, and AI agents.',
+    to: '/docs/integrations',
+    icon: <BotIcon />,
+    patchColor: 'blue',
+  },
+  {
+    title: 'Fix a problem',
+    description: "Why Flow said no, and what to do about it.",
+    to: '/docs/troubleshooting',
+    icon: <LifeBuoyIcon />,
+    patchColor: 'amber',
   },
 ];
 
 function TopicCard({title, description, to, icon, patchColor}: Topic) {
   return (
-    // 4 remaining topics (Getting started got promoted to the hero banner
-    // above) -> col--3 fills one clean row of 4 instead of orphaning a
-    // fourth card alone under a 3-per-row col--4 grid.
+    // 8 topics (Getting started got promoted to the hero banner above)
+    // -> col--3 fills two clean rows of 4.
     <div className="col col--3">
       <Link to={to} className={styles.card}>
         <div className={`rvlt-patch rvlt-patch--${patchColor}`}>{icon}</div>
