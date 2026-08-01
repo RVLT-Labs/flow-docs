@@ -1,8 +1,19 @@
 # Writing guide — RVLT Flow user guide
 
-How pages in this guide are structured and written. Agreed in the docs-structure
-planning session (gearflow#959), informed by research into Linear, Notion, Slack,
+How pages in this guide are structured. Agreed in the docs-structure planning
+session (gearflow#959), informed by research into Linear, Notion, Slack,
 Shopify, and the rental-industry help centers (Current RMS, Rentman, Flex).
+
+Three companion pieces make this actionable:
+
+- **[VOICE.md](./VOICE.md)** — the words: voice rules, terminology law, the
+  AI-slop detection checklist, and the TODO-not-guess rule for gaps. Binding
+  on every article.
+- **[`templates/`](./templates/)** — copyable skeletons for the three page
+  types (task, overview, troubleshooting) with the anatomy annotated inline.
+- **`.claude/skills/write-article/`** — the brain-dump-to-article workflow:
+  paste raw notes into a session, get a drafted, slop-checked, build-verified
+  article on a branch.
 
 ## The structure in one paragraph
 
@@ -16,6 +27,9 @@ project", "Deploying gear"). Guided content and reference content never
 interleave. `sidebars.ts` is the single source of section order.
 
 ## Page types
+
+Copyable skeletons for all three live in [`templates/`](./templates/) —
+start from those rather than a blank file.
 
 ### Section overview (the `index.mdx` of each folder)
 
@@ -55,19 +69,21 @@ writing the content they promise.
 
 ## Voice and terminology
 
-- **Voice:** dry, concrete, production-crew vocabulary (matches the site's
-  existing copy — "RTFM. It'll be easier for us all."). Short sentences.
-  No marketing.
-- **Terminology is law** — the app's glossary (`gearflow/docs/glossary.md`)
-  and this guide's [Glossary](docs/glossary.mdx) define it. The ones people
-  get wrong: **Deploy/Return** (never "check out/check in" in prose),
-  **client** (never "customer"), **pick slip** (the packing-list PDF),
-  **pencilled** (tentative), **model vs asset vs bulk stock**.
-- **UI labels in bold**, exactly as they appear on screen. Keyboard keys in
-  backticks.
-- This is a **user guide**: no code, no schema names, no API routes — the
-  developer docs live in the app repo. The one exception is
-  Integrations & AI, which may show the minimum a user needs to paste.
+Fully specified in **[VOICE.md](./VOICE.md)** — voice rules, the terminology
+table, the banned-word/construction/structure slop checklist, and the
+before/after examples. The two decisions that shape everything there:
+
+- **Dry, mostly straight.** Personality budget is one wry line per page, in
+  the intro or an aside — never in steps, never in troubleshooting. The
+  homepage carries the snark; articles carry the answers.
+- **Terminology is law** — this guide's [Glossary](docs/glossary.mdx) (and
+  the app repo's `gearflow/docs/glossary.md` behind it) define the words;
+  synonyms are defects.
+
+Scope rule that lives here because it's structural: this is a **user
+guide** — no code, no schema names, no API routes. The developer docs live
+in the app repo. The one exception is Integrations & AI, which may show the
+minimum a user needs to paste.
 
 ## v1 scope (agreed)
 
