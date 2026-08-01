@@ -96,19 +96,16 @@ in the repo's **Settings → Pages → Build and deployment**, set **Source** to
 **GitHub Actions**. Until that's flipped, the workflow will run but the deploy job
 fails with a clear error.
 
-No custom domain yet, so it's a project site served at
-`https://rvlt-labs.github.io/flow-docs/` — `url`/`baseUrl` in `docusaurus.config.ts`
-are set accordingly. If a custom domain lands later (the subdomain-off-`flow.rvlt.app`
-vs. standalone `docs.*` decision below), both need to change together: `url` → the
-custom domain, `baseUrl` → `/` (custom domains serve from root), plus a
-`static/CNAME` file.
+Custom domain is `docs.flow.rvlt.app` (resolves the subdomain-vs-`docs.*` open
+decision below in favor of the subdomain) — `url`/`baseUrl` in `docusaurus.config.ts`
+are set accordingly (`baseUrl: '/'`, custom domains serve from root). The domain
+itself is configured in the repo's **Settings → Pages → Custom domain** and DNS is
+Cloudflare-side — both handled outside this repo/session.
 
 ## Open decisions (gearflow#959)
 
 Not resolved by this bootstrap — flagged here so they aren't lost:
 
-- **Custom domain.** Subdomain off `flow.rvlt.app` vs. a standalone `docs.*` domain —
-  see the deploy section above for what changes when this lands.
 - **Search provider at scale.** Local search is wired up and working; revisit for Algolia
   DocSearch if/when content volume outgrows a client-side index.
 - **Content ownership/cadence.**
