@@ -1,0 +1,29 @@
+---
+title: API keys and AI agents
+description: Let an AI agent (or your own scripts) work Flow — with your permissions, your scopes, and a kill switch.
+---
+
+# API keys and AI agents
+
+Flow has a real API and speaks MCP, which means Claude and other AI agents
+can search your gear, build quotes, and check availability — always as a
+specific user, never with more access than that user has.
+
+:::note[🚧 Not written yet]
+This page is scaffolded — the outline below is what it will cover. Progress
+is tracked in [gearflow#959](https://github.com/TwoToned/gearflow/issues/959).
+:::
+
+## What this page will cover
+
+- Who can do this
+- Creating an API key: scope presets (read-only agent, booking agent, …)
+  and what each allows
+- The one-click "Connect an AI Agent" flow (and OAuth for claude.ai —
+  no admin required)
+- The safety rails in plain language: dangerous actions require explicit
+  confirmation, financial data can be hidden per key, and every agent
+  action is badged in the activity log
+- Reversing a bad agent run
+- The org-wide kill switch
+- Rotating and revoking keys; the per-key request log
